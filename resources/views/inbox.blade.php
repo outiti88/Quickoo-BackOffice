@@ -81,8 +81,8 @@
                     @can('ramassage-commande')
                     {{$notification->data['user']['image']}}
                     @endcan
-                    @can('client')
-                    https://scontent.frba3-1.fna.fbcdn.net/v/t1.0-9/107093937_2858330454295626_6840339815783805174_o.png?_nc_cat=101&_nc_sid=174925&_nc_ohc=f7hP3-o3n4oAX9AW9GV&_nc_ht=scontent.frba3-1.fna&oh=a91e690eb2d5ab61a7bfc34535465f58&oe=5F8F82CD
+                    @can('fournisseur')
+                    {{url('/assets/images/favicon.png')}}
                     @endcan
                     "
                     alt="user" width="50" class="rounded-circle">
@@ -110,7 +110,7 @@
                                     @can('ramassage-commande')
                                     {{$notification->data['user']['name']}}
                                     @endcan
-                                    @can('client')
+                                    @can('fournisseur')
                                     Quickoo Delivery
                                     @endcan
                                 </b>
@@ -121,7 +121,7 @@
                                     @can('ramassage-commande')
                                     A ajouté une nouvelle commande avec le numero :
                                     @endcan
-                                    @can('client')
+                                    @can('fournisseur')
                                     A modifié le staut de la commande :
                                     @endcan
                                 
@@ -135,14 +135,14 @@
                                     @can('ramassage-commande')
                                     {{date_format($notification->created_at,"Y/m/d")}}
                                     @endcan
-                                    @can('client')
+                                    @can('fournisseur')
                                     {{date_format($notification->updated_at,"Y/m/d")}}
                                     @endcan
                                     <p class="proile-rating"><span> 
                                         @can('ramassage-commande')
                                         {{date_format($notification->created_at,"H:i:s")}}
                                         @endcan
-                                        @can('client')
+                                        @can('fournisseur')
                                         {{date_format($notification->updated_at,"H:i:s")}}
                                         @endcan
                                     </span></p>
@@ -168,7 +168,7 @@
                                     @can('ramassage-commande')
                                     {{$notification->data['user']['name']}}
                                     @endcan
-                                    @can('client')
+                                    @can('fournisseur')
                                     Quickoo Delivery
                                     @endcan
                                 </b>
