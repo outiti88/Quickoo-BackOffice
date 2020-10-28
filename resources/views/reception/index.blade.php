@@ -23,7 +23,7 @@
             <div class=m-r-5" style="margin-right: 10px;">
                 <a  class="btn btn-warning text-white"  data-toggle="modal" data-target="#modalStockSearch"><i class="fa fa-search"></i></a>
             </div>
-            @can('gestion-stock')
+            @can('ecom')
             <div class="m-r-5">
                 <a  class="btn btn-danger text-white"  data-toggle="modal" data-target="#modalReception"><i class="fa fa-plus-square"></i> Envoyer</a>
             </div>
@@ -210,7 +210,7 @@
                                                 <option value="" disabled selected>Produit</option>
                                                 @foreach ($produits as $produit)
                                             <option value="{{$produit->id}}" class="rounded-circle">
-                                                {{$produit->reference .' '.$produit->libelle}}
+                                                {{$produit->libelle  .' '.$produit->reference}}
                                             </option>
                                                 @endforeach
                                                

@@ -179,6 +179,7 @@ class ReceptionController extends Controller
                     $stock = Stock::findOrFail($stock->id);
                     $stock->qte += $reception_produit->qte ;
                     $stock->cmd -= $reception_produit->qte ;
+                    $stock->etat = "Apro";
                     $stock->save();
                 }
                 //dd($reception_produits[0]);

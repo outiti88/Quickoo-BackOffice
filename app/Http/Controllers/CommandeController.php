@@ -153,6 +153,33 @@ class CommandeController extends Controller
 
     public function search(Request $request ) {
 
+        if(strlen($request->search) >= 14){
+            $users = [] ;
+            $stock = [];
+            if(!Gate::denies('ramassage-commande')) {
+                //session administrateur donc on affiche tous les commandes
+                $total = DB::table('produits')->count();
+                $produits= DB::table('produits')->orderBy('created_at', 'DESC')->where('reference','like','%'.$request->search.'%')->paginate(10);
+                foreach($produits as $produit){
+                    if(!empty(User::find($produit->user_id)))
+                    $users[] =  User::find($produit->user_id) ;
+                }
+            }
+            else{
+                $produits= DB::table('produits')->where('user_id',Auth::user()->id )->orderBy('created_at', 'DESC')->where('reference','like','%'.$request->search.'%')->paginate(10);
+                $total =DB::table('produits')->where('user_id',Auth::user()->id )->count();
+                
+            }
+            foreach($produits as $produit){
+                $dbStock = DB::table('stocks')->where('produit_id',$produit->id)->first();
+                $stock[] =  $dbStock ;
+            }
+            return view('produit.index' , ['produits' => $produits, 
+                                        'total'=>$total,
+                                        'users'=> $users,
+                                        'stock'=>$stock]);
+        }
+
         if(strcmp(substr($request->search,-strlen($request->search),4) , "FAC_") == 0){  
             $clients = [];  
             $users = []; 
@@ -339,6 +366,11 @@ class CommandeController extends Controller
         $commande->numero = substr($fournisseur->name, - strlen($fournisseur->name) , 3)."-".date("md-is");
 
         if(!Gate::denies('ecom')){
+            if(!isset($request->produit)){
+                $request->session()->flash('produit_required');
+                    return redirect('/commandes');
+
+            }
             foreach ($request->produit as $index => $IdProduit){
                 $produit = Produit::find($IdProduit);
                 $prixProduit = $produit->prix * $request->qte[$index];

@@ -23,7 +23,7 @@
             <div class=m-r-5" style="margin-right: 10px;">
                 <a  class="btn btn-warning text-white"  data-toggle="modal" data-target="#modalStockSearch"><i class="fa fa-search"></i></a>
             </div>
-            @can('gestion-stock')
+            @can('ecom')
             <div class="m-r-5">
                 <a  class="btn btn-danger text-white"  data-toggle="modal" data-target="#modalStockAdd"><i class="fa fa-plus-square"></i> Ajouter</a>
             </div>
@@ -84,12 +84,38 @@
                             <td>{{$produit->libelle}}</td>
                             <td>{{$produit->categorie}}</td>
                             <td>{{$produit->prix}} MAD</td>
-                            <td>{{$stock[$index]->qte}}</td>
                             <td>
+                            @if ($stock[$index]->qte > 0)
+                                
                             <a href="{{route('reception.index')}}" style="color: white" 
+                                class="badge badge-pill badge-success">
+                                {{$stock[$index]->qte}}
+                            </a>
+                            @else
+                                @if ($stock[$index]->etat == 'Nouveau' )
+                                <a href="{{route('reception.index')}}" style="color: white" 
+                                    class="badge badge-pill badge-primary">
+                                    Nouveau
+                                </a> 
+                                @else
+                                <a href="{{route('reception.index')}}" style="color: white" 
                                     class="badge badge-pill badge-danger">
-                                {{$stock[$index]->cmd}}
+                                    RUPTURE
                                 </a>
+                                @endif
+                            @endif
+
+                            </td>
+                            <td>
+                                @if ($stock[$index]->cmd > 0)
+                                    <a href="{{route('reception.index')}}" style="color: white" 
+                                        class="badge badge-pill badge-info">
+                                        {{$stock[$index]->cmd}}
+                                    </a>
+                                @else
+                                    PAS DE RECEPTION
+                                @endif
+                            
                             </td>
                             
          
@@ -183,7 +209,7 @@
                                     </div>
                                     <div class="custom-file">
                                       <input type="file" name="photo" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                      <label class="custom-file-label" for="inputGroupFile01">choisir une photo</label>
+                                      <label class="custom-file-label" for="inputGroupFile01">Choisissez une photo</label>
                                     </div>
                                   </div>
                                 <div class="form-group">

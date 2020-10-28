@@ -105,6 +105,13 @@
           </div>
         @endif
 
+        @if (session()->has('produit_required'))
+        <div class="alert alert-dismissible alert-danger col-12">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Attention !</strong> Il faut mentionner les produits de la commande
+          </div>
+        @endif
+
         @if (session()->has('delete'))
         <div class="alert alert-dismissible alert-danger col-12">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -522,121 +529,120 @@
                                 <div style="display: none"  class="form-group" id="secteur">
                                     <label class="col-sm-12">Secteur :</label>
                                     <div class="col-sm-12">
-                                        <select name="secteur" class="form-control form-control-line " required>
-                                            
-                                            <option value="">Tous les secteurs</option>
-                                            <option value="1">Al Kasaba</option>
-                                            <option value="1">Aviation</option>
-                                            <option value="1">Cap spartel</option>
-                                            <option value="0">Centre ville</option>
-                                            <option value="0">Cité californie</option>
-                                            <option value="0">Girari</option>
-                                            <option value="0">Ibn Taymia</option>
-                                            <option value="1">M'nar</option>
-                                            <option value="0">M'sallah</option>
-                                            <option value="0">Makhoukha</option>
-                                            <option value="0">Malabata</option>
-                                            <option value="0">Marchane</option>
-                                            <option value="0">Marjane</option>
-                                            <option value="0">Moujahidine</option>
-                                            <option value="0">Moulay Youssef</option>
-                                            <option value="0">Santa</option>
-                                            <option value="0">Val Fleuri</option>
-                                            <option value="0">Vieille montagne</option>
-                                            <option value="0">Ziatene</option>
-                                            <option value="0">Achennad</option>
-                                            <option value="0">Aharrarine</option>
-                                            <option value="0">Ahlane</option>
-                                            <option value="0">Aida</option>
-                                            <option value="0">Al Anbar</option>
-                                            <option value="0">Al Warda</option>
-                                            <option value="0">Aouama Gharbia</option>
-                                            <option value="0">Beausejour</option>
-                                            <option value="0">Behair</option>
-                                            <option value="0">Ben Dibane</option>
-                                            <option value="0">Beni Makada Lakdima</option>
-                                            <option value="0">Beni Said</option>
-                                            <option value="0">Beni Touzine</option>
-                                            <option value="0">Bir Aharchoune</option>
-                                            <option value="0">Bir Chifa</option>
-                                            <option value="0">Bir El Ghazi</option>
-                                            <option value="0">Bouchta-Abdelatif</option>
-                                            <option value="0">Bouhout 1</option>
-                                            <option value="0">Bouhout 2</option>
-                                            <option value="0">Dher Ahjjam</option>
-                                            <option value="0">Dher Lahmam</option>
-                                            <option value="0">El Baraka</option>
-                                            <option value="0">El Haj El Mokhtar</option>
-                                            <option value="0">El Khair 1</option>
-                                            <option value="0">El Khair 2</option>
-                                            <option value="0">El Mers 1</option>
-                                            <option value="0">El Mers 2</option>
-                                            <option value="0">El Mrabet</option>
-                                            <option value="0">Ennasr</option>
-                                            <option value="0">Gourziana</option>
-                                            <option value="0">Haddad</option>
-                                            <option value="0">Hanaa 1</option>
-                                            <option value="0">Hanaa 2</option>
-                                            <option value="0">Hanaa 3 - Soussi</option>
-                                            <option value="0">Jirrari</option>
-                                            <option value="0">Les Rosiers</option>
-                                            <option value="0">Zemmouri</option>
-                                            <option value="0">Zouitina</option>
-                                            <option value="0">Al Amal</option>
-                                            <option value="0">Al Mandar Al Jamil</option>
-                                            <option value="0">Alia</option>
-                                            <option value="0">Benkirane</option>
-                                            <option value="0">Charf</option>
-                                            <option value="0">Draoua</option>
-                                            <option value="0">Drissia</option>
-                                            <option value="0">El Majd</option>
-                                            <option value="0">El Oued</option>
-                                            <option value="1">Mghogha</option>
-                                            <option value="0">Nzaha</option>
-                                            <option value="1">Gueznaia</option>
-                                            <option value="0">Sania</option>
-                                            <option value="0">Tanger City Center</option>
-                                            <option value="0">Tanja Balia</option>
-                                            <option value="1">Zone Industrielle Mghogha</option>
-                                            <option value="0">Azib Haj Kaddour</option>
-                                            <option value="0">Bel Air - Val fleuri</option>
-                                            <option value="0">Bir Chairi</option>
-                                            <option value="0">Branes 1</option>
-                                            <option value="0">Branes 2</option>
-                                            <option value="0">Casabarata</option>
-                                            <option value="0">Castilla</option>
-                                            <option value="0">Hay Al Bassatine</option>
-                                            <option value="0">Hay El Boughaz</option>
-                                            <option value="0">Hay Zaoudia</option>
-                                            <option value="0">Lalla Chafia</option>
-                                            <option value="0">Souani</option>
-                                            <option value="1">Achakar</option>
-                                            <option value="0">Administratif</option>
-                                            <option value="0">Ahammar</option>
-                                            <option value="0">Ain El Hayani</option>
-                                            <option value="0">Algerie</option>
-                                            <option value="0">Branes Kdima</option>
-                                            <option value="0">Californie</option>
-                                            <option value="0">Centre</option>
-                                            <option value="0">De La Plage</option>
-                                            <option value="1">Du Golf</option>
-                                            <option value="0">Hay Hassani</option>
-                                            <option value="0">Iberie</option>
-                                            <option value="0">Jbel Kbir</option>
-                                            <option value="0">Laaouina</option>
-                                            <option value="0">Marchan</option>
-                                            <option value="0">Mediouna</option>
-                                            <option value="0">Mesnana</option>
-                                            <option value="0">Mghayer</option>
-                                            <option value="0">Mister Khouch</option>
-                                            <option value="0">Mozart</option>
-                                            <option value="0">Msala</option>
-                                            <option value="0">Médina</option>
-                                            <option value="1">Port Tanger ville</option>
-                                            <option value="0">Rmilat</option>
-                                            <option value="0">Star Hill</option>
-                                            <option value="0">manar</option>
-                                            <option value="0">Autre secteur</option>
+                                      <select  value="{{ old('secteur') }}" name="secteur" class="form-control form-control-line" required>
+  
+                                          <option value="">Tous les secteurs</option>
+                                              <option>Aviation</option>
+                                              <option>Al Kasaba</option>
+                                              <option>Cap spartel</option>
+                                              <option>Centre ville</option>
+                                              <option>Cité californie</option>
+                                              <option>Girari</option>
+                                              <option>Ibn Taymia</option>
+                                              <option>M'nar</option>
+                                              <option>M'sallah</option>
+                                              <option>Makhoukha</option>
+                                              <option>Malabata</option>
+                                              <option>Marchane</option>
+                                              <option>Marjane</option>
+                                              <option>Moujahidine</option>
+                                              <option>Moulay Youssef</option>
+                                              <option>Santa</option>
+                                              <option>Val Fleuri</option>
+                                              <option>Vieille montagne</option>
+                                              <option>Ziatene</option>
+                                              <option>Autre secteur</option>
+                                              <option>Achennad</option>
+                                              <option>Aharrarine</option>
+                                              <option>Ahlane</option>
+                                              <option>Aida</option>
+                                              <option>Al Anbar</option>
+                                              <option>Al Warda</option>
+                                              <option>Aouama Gharbia</option>
+                                              <option>Beausejour</option>
+                                              <option>Behair</option>
+                                              <option>Ben Dibane</option>
+                                              <option>Beni Makada Lakdima</option>
+                                              <option>Beni Said</option>
+                                              <option>Beni Touzine</option>
+                                              <option>Bir Aharchoune</option>
+                                              <option>Bir Chifa</option>
+                                              <option>Bir El Ghazi</option>
+                                              <option>Bouchta-Abdelatif</option>
+                                              <option>Bouhout 1</option>
+                                              <option>Bouhout 2</option>
+                                              <option>Dher Ahjjam</option>
+                                              <option>Dher Lahmam</option>
+                                              <option>El Baraka</option>
+                                              <option>El Haj El Mokhtar</option>
+                                              <option>El Khair 1</option>
+                                              <option>El Khair 2</option>
+                                              <option>El Mers 1</option>
+                                              <option>El Mers 2</option>
+                                              <option>El Mrabet</option>
+                                              <option>Ennasr</option>
+                                              <option>Gourziana</option>
+                                              <option>Haddad</option>
+                                              <option>Hanaa 1</option>
+                                              <option>Hanaa 2</option>
+                                              <option>Hanaa 3 - Soussi</option>
+                                              <option>Jirrari</option>
+                                              <option>Les Rosiers</option>
+                                              <option>Zemmouri</option>
+                                              <option>Zouitina</option>
+                                              <option>Al Amal</option>
+                                              <option>Al Mandar Al Jamil</option>
+                                              <option>Alia</option>
+                                              <option>Benkirane</option>
+                                              <option>Charf</option>
+                                              <option>Draoua</option>
+                                              <option>Drissia</option>
+                                              <option>El Majd</option>
+                                              <option>El Oued</option>
+                                              <option>Mghogha</option>
+                                              <option>Nzaha</option>
+                                              <option>Sania</option>
+                                              <option>Tanger City Center</option>
+                                              <option>Tanja Balia</option>
+                                              <option>Zone Industrielle Mghogha</option>
+                                              <option>Azib Haj Kaddour</option>
+                                              <option>Bel Air - Val fleuri</option>
+                                              <option>Bir Chairi</option>
+                                              <option>Branes 1</option>
+                                              <option>Branes 2</option>
+                                              <option>Casabarata</option>
+                                              <option>Castilla</option>
+                                              <option>Hay Al Bassatine</option>
+                                              <option>Hay El Boughaz</option>
+                                              <option>Hay Zaoudia</option>
+                                              <option>Lalla Chafia</option>
+                                              <option>Souani</option>
+                                              <option>Achakar</option>
+                                              <option>Administratif</option>
+                                              <option>Ahammar</option>
+                                              <option>Ain El Hayani</option>
+                                              <option>Algerie</option>
+                                              <option>Branes Kdima</option>
+                                              <option>Californie</option>
+                                              <option>Centre</option>
+                                              <option>De La Plage</option>
+                                              <option>Du Golf</option>
+                                              <option>Hay Hassani</option>
+                                              <option>Iberie</option>
+                                              <option>Jbel Kbir</option>
+                                              <option>Laaouina</option>
+                                              <option>Marchan</option>
+                                              <option>Mediouna</option>
+                                              <option>Mesnana</option>
+                                              <option>Mghayer</option>
+                                              <option>Mister Khouch</option>
+                                              <option>Mozart</option>
+                                              <option>Msala</option>
+                                              <option>Médina</option>
+                                              <option>Port Tanger ville</option>
+                                              <option>Rmilat</option>
+                                              <option>Star Hill</option>
+                                              <option>manar</option>
                                         </select>
                                     </div>
                                 </div>
@@ -694,12 +700,12 @@
                                     <div class="form-group col-md-6">
                                       <label for="produit" class="col-sm-12">Produit :</label>
                                       <div class="col-md-12">
-                                          <select name="produit[]" id="produit" class="form-control form-control-line" value="{{ old('produit') }}">
+                                          <select name="produit[]" id="produit" class="form-control form-control-line" value="{{ old('produit') }}" required>
                                               <option value="" disabled selected>Produit</option>
                                               @foreach ($produits as $produit)
                                           <option value="{{$produit->id}}" class="rounded-circle">
-                                              {{$produit->reference .' '.$produit->libelle}}
-                                          </option>
+                                            {{$produit->libelle  .' '.$produit->reference}}
+                                        </option>
                                               @endforeach
                                              
                                           </select>
@@ -709,7 +715,7 @@
                                       <div class="form-group col-md-4 input-group">
                                         <label for="qte" class="col-md-12">Quantité:</label>
                                         <div class="col-md-12">
-                                            <input  value="{{ old('qte') }}" type="number" class="form-control form-control-line" name="qte[]" id="qte">
+                                            <input  value="{{ old('qte') }}" type="number" class="form-control form-control-line" name="qte[]" id="qte" required>
                                         </div>
                                         
                                     </div>
@@ -721,7 +727,7 @@
                               <div class="form-group">
                                   <label class="col-md-12">Nom et Prénom du destinataire :</label>
                                   <div class="col-md-12">
-                                      <input  value="{{ old('nom') }}" name="nom" type="text" placeholder="Nom & Prénom" class="form-control form-control-line">
+                                      <input  value="{{ old('nom') }}" name="nom" type="text" placeholder="Nom & Prénom" class="form-control form-control-line" required>
                                   </div>
                               </div>
                              
@@ -729,7 +735,7 @@
                                   <div class="form-group col-md-4">
                                       <label for="qte" class="col-md-12">Nombre de Colis :</label>
                                       <div class="col-md-12">
-                                          <input  value="{{ old('colis') }}" type="number" class="form-control form-control-line" name="colis" id="qte">
+                                          <input  value="{{ old('colis') }}" type="number" class="form-control form-control-line" name="colis" id="qte" required>
                                       </div>
                                   </div>
   
@@ -783,13 +789,13 @@
                               <div class="form-group">
                                   <label class="col-md-12">Téléphone :</label>
                                   <div class="col-md-12">
-                                      <input value="{{ old('telephone') }}"  name="telephone" type="text" placeholder="0xxx xxxxxx" class="form-control form-control-line">
+                                      <input value="{{ old('telephone') }}"  name="telephone" type="text" placeholder="0xxx xxxxxx" class="form-control form-control-line" required>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-md-12">Adresse :</label>
                                   <div class="col-md-12">
-                                      <textarea  name="adresse" rows="5" class="form-control form-control-line">{{ old('adresse') }}</textarea>
+                                      <textarea  name="adresse" rows="5" class="form-control form-control-line">{{ old('adresse') }}</textarea required>
                                   </div>
                               </div>
                               <div class="form-group">
