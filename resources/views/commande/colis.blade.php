@@ -387,6 +387,17 @@
                                       <input class="form-control" type="number" name="prixMax" value="0" id="example-date-input">
                                     </div>
                                   </div>
+
+                                  <div class="from-group row">
+                                    <label for="bl" class="col-sm-3">BL généré</label>
+                                    <div class="col-3">
+                                      <input class="form-control" name="bl" type="checkbox" value="1" id="bl">
+                                    </div>
+                                    <label for="facture" class="col-sm-3">Facturée</label>
+                                    <div class="col-3">
+                                      <input class="form-control" name="facturer" type="checkbox" value="1" id="facture">
+                                    </div>
+                                </div>
                                 
                                 <div class="form-group">
                                     <div class="modal-footer d-flex justify-content-center">
