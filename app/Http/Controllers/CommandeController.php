@@ -360,11 +360,15 @@ class CommandeController extends Controller
         $commande->adresse = $request->adresse;
 
         $HorsTanger = array("Cap spartel","Du Golf","manar","Aviation","Mghogha","Zone Industrielle Mghogha","Achakar");
-        $prixVille = (in_array($request->secteur,$HorsTanger)) ? 25 : 17 ;
-        $prixPoids = (($request->poids==="normal") ? 0 : 18);
-        $commande->prix = $prixVille + $prixPoids;
-        $commande->prix = ($commande->prix == 43 ) ? 45 : $commande->prix ;
-        if($request->ville != 0 ) $commande->prix += 20 ;
+        
+        if($request->poids==="normal"){
+            $commande->prix = (in_array($request->secteur,$HorsTanger)) ? $fournisseur->nh : $fournisseur->n  ;
+        }
+        else{
+            $commande->prix = (in_array($request->secteur,$HorsTanger)) ? $fournisseur->vh : $fournisseur->v  ;
+        }
+
+
         $commande->statut = "expidié";
         $commande->colis = $request->colis;
         $commande->poids = $request->poids;
