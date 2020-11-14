@@ -81,7 +81,11 @@ class RegisterController extends Controller
             'telephone'=>$data['telephone'],
             'adresse'=>$data['adresse'],
             'ville'=>$data['ville'],
-            'image'=>$data['image']
+            'image'=>$data['image'],
+            'n'=>$data['n'],
+            'v'=>$data['v'],
+            'nh'=>$data['nh'],
+            'vh'=>$data['vh']
             
         ]);
         if(empty($data['roles'])){

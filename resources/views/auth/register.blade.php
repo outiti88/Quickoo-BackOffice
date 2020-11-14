@@ -163,6 +163,35 @@
                         
                             </div>
                         </div>
+                        <div class="form-group row">
+
+                            <label for="n" class="col-md-4 col-form-label text-md-right">{{ __('Poids Normal') }}</label>
+                            <div class="col-md-2">
+                                <input id="n" type="number" class="form-control" name="n" value="{{ 0,old('n') }}"   required >
+                            </div>
+
+                            <label for="v" class="col-md-4 col-form-label text-md-right">{{ __('Poids Volumineux') }}</label>
+                            <div class="col-md-2">
+                                <input id="v" type="number" class="form-control" name="v" value="{{ 0,old('v') }}"   required >
+                            </div>
+                          
+                        </div>
+
+                        <div class="form-group row">
+                           
+                            <label for="nh" class="col-md-4 col-form-label text-md-right">{{ __('Poids Normal Hors Tanger') }}</label>
+                            <div class="col-md-2">
+                                <input id="nh" type="number" class="form-control" name="nh" value="{{0, old('nh') }}"   required >
+                            </div>
+
+                            <label for="vh" class="col-md-4 col-form-label text-md-right">{{ __('Poids Volumineux Hors Tanger') }}</label>
+                            <div class="col-md-2">
+                                <input id="vh" type="number" class="form-control" name="vh" value="{{ 0,old('vh') }}"   required >
+                            </div>
+
+                        </div>
+
+                    
 
                         <div class="form-group row">
                             <div class="col-12 d-flex justify-content-around ">

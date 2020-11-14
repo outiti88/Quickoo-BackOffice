@@ -71,12 +71,16 @@ class UsersController extends Controller
         if(Gate::denies('edit-users')){
             return redirect(route('admin.users.index'));
         }
-       // dd($request->roles);
        $user->roles()->sync($request->roles);
        $user->image=$request->image;
        $user->name=$request->name;
        $user->email=$request->email;
        $user->description = $request->description;
+       $user->n = $request->n;
+       $user->v = $request->v;
+       $user->nh = $request->nh;
+       $user->vh = $request->vh;
+
        $user->save();
        
        return redirect()->route('admin.users.index');
