@@ -104,7 +104,10 @@ class CommandeController extends Controller
 
         if($request->filled('statut')){
             //dd("salut");
-            $commandes->where('statut','like','%'.$request->statut.'%');
+            if($request->statut === 'en cours' )
+                $commandes->whereIn('statut', array('Reporté', 'Relancée', 'Modifiée','en cours'));
+                else
+                $commandes->where('statut','like','%'.$request->statut.'%');
            //dd($commandes->count());
         }
 
@@ -120,10 +123,12 @@ class CommandeController extends Controller
         }
         
         if($request->filled('dateMin')){
-            $commandes->whereDate('created_at','>=',$request->dateMin);
+            $commandes->whereDate('created_at','>=',$request->dateMin)
+                ->orWhereDate('postponed_at','>=',$request->dateMin);
         }
         if($request->filled('dateMax')){
-            $commandes->whereDate('created_at','<=',$request->dateMax);
+            $commandes->whereDate('created_at','<=',$request->dateMax)
+                ->orWhereDate('postponed_at','<=',$request->dateMax);
         }
         if($request->filled('prixMin') && $request->prixMin > 0){
             $commandes->where('montant','>=',$request->prixMin);
@@ -781,7 +786,11 @@ class CommandeController extends Controller
 
 
         else{
-            if($commande->statut === 'En cours' && $commande->traiter > 0){ //bach traiter commande khass tkoun en cours w bl dyalha kyn
+            if(($commande->statut === 'En cours' || $commande->statut === 'Reporté') && $commande->traiter > 0){
+                if($commande->statut === 'Reporté'){
+                    if($request->filled('prevu_at')) $commande->postponed_at = $request->prevu_at;
+                    else $request->prevu_at = now() ;
+                } //bach traiter commande khass tkoun en cours w bl dyalha kyn
                 $commande->statut= $request->statut;
                 $commande->commentaire= $request->commentaire;
                 $commande->save();

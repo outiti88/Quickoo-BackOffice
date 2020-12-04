@@ -244,6 +244,7 @@
                                     @endcan
                                         @break
                                     @case("En cours")
+                                    @case("Reporté")
                                     badge-info"
                                         @if ($commande->traiter > 0)
                                         title="Voir le bon de livraison" 
@@ -273,7 +274,13 @@
                                      > 
                                      <span style="font-size: 1.25em">{{$commande->statut}}</span> 
                                 </a>
-                                <br> ({{\Carbon\Carbon::parse($commande->updated_at)->diffForHumans()}}) 
+                                <br> 
+                                @if ($commande->statut == "Reporté" )
+                                Pour le: <br>{{$commande->postponed_at}}
+                                @else
+                                ({{\Carbon\Carbon::parse($commande->updated_at)->diffForHumans()}}) 
+
+                                @endif
                             </td>
                            <td style="font-size: 1.5em"><a title="Voir le detail" style="color: #e85f03" href="/commandes/{{$commande->id}}"><i class="mdi mdi-eye"></i></a></td>
                         </tr>
@@ -977,6 +984,7 @@
 @endsection
 
 @section('javascript')
+
     @if ($errors->any())
         <script type="text/javascript">
             $(window).on('load',function(){
